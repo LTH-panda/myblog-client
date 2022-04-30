@@ -1,3 +1,10 @@
+import { AboutPageTemplate, Template } from "components/Shared";
+
 export default function Home() {
-  return <h1>Home</h1>;
+  return (
+    <>
+      <AboutPageTemplate>about home</AboutPageTemplate>
+      <Template>Home</Template>
+    </>
+  );
 }

@@ -47,7 +47,7 @@ const SideBar = ({ open, handleSidebar }) => {
       <>
         <Dimmed onClick={handleSidebar} />
         <SideBarBlock>
-          <HeadTitle />
+          <HeadTitle onEvent={handleSidebar} />
           <Nav direction={"column"} />
         </SideBarBlock>
       </>

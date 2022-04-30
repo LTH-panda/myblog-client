@@ -2,6 +2,7 @@ const { createSlice } = require("@reduxjs/toolkit");
 
 const initialState = {
   sidebar: false,
+  searchbar: false,
 };
 
 const uiSlice = createSlice({
@@ -11,8 +12,11 @@ const uiSlice = createSlice({
     toggleSidebar: (state) => {
       state.sidebar = !state.sidebar;
     },
+    toggleSearchbar: (state) => {
+      state.searchbar = !state.searchbar;
+    },
   },
 });
 
-export const { toggleSidebar } = uiSlice.actions;
+export const { toggleSidebar, toggleSearchbar } = uiSlice.actions;
 export default uiSlice.reducer;

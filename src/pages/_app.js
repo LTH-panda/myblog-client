@@ -1,16 +1,13 @@
 import { Layout } from "components/Shared";
-import { Provider } from "react-redux";
-import store from "store";
+import { wrapper } from "store";
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <Provider store={store}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </Provider>
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
   );
 }
 
-export default MyApp;
+export default wrapper.withRedux(MyApp);
