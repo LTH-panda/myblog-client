@@ -28,12 +28,12 @@ const PostListItemBlock = styled.div`
   }
 `;
 const ImageBlock = styled.div`
-  border-bottom: 1px solid #000;
   width: 100%;
 `;
 
 const TextBlock = styled.div`
   display: flex;
+  flex: 1;
   flex-direction: column;
   gap: 0.5rem;
   padding: 1rem;
@@ -41,7 +41,9 @@ const TextBlock = styled.div`
 const Title = styled.h3`
   font-size: 1.3rem;
 `;
-const Body = styled.p``;
+const Body = styled.p`
+  flex: 1;
+`;
 const Date = styled.div`
   color: ${OpenColor.gray[5]};
 `;
