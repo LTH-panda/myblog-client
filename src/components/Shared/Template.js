@@ -1,8 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import AboutPageTemplate from "./AboutPageTemplate";
 
-const TemplateBlock = styled.div`
+const TemplateBlock = styled.main`
   padding: 1rem;
 `;
 

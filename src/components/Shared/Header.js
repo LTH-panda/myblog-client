@@ -12,7 +12,6 @@ const HeaderBlock = styled.header`
   align-items: center;
   padding: 1rem;
   padding-bottom: 0.5rem;
-  border-bottom: 1px solid #000;
 `;
 
 const NavBlock = styled.nav`

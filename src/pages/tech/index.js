@@ -1,3 +1,13 @@
+import { PostList } from "components/Post";
+import { AboutPageTemplate, Template } from "components/Shared";
+
 export default function TechPage() {
-  return <h1>Tech</h1>;
+  return (
+    <>
+      <AboutPageTemplate></AboutPageTemplate>
+      <Template>
+        <PostList />
+      </Template>
+    </>
+  );
 }
