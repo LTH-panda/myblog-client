@@ -1,8 +1,13 @@
-const { createSlice } = require("@reduxjs/toolkit");
+import { createSlice } from "@reduxjs/toolkit";
+import { HYDRATE } from "next-redux-wrapper";
 
 const initialState = {
   sidebar: false,
   searchbar: false,
+  authForm: {
+    username: "",
+    password: "",
+  },
 };
 
 const uiSlice = createSlice({
@@ -14,6 +19,9 @@ const uiSlice = createSlice({
     },
     toggleSearchbar: (state) => {
       state.searchbar = !state.searchbar;
+    },
+    changeForm: (state, action) => {
+      state.authForm;
     },
   },
 });

@@ -1,4 +1,5 @@
 import { Button } from "components/Shared";
+import useAuthForm from "hooks/useAuthForm";
 import OpenColor from "open-color";
 import React from "react";
 import styled from "styled-components";
@@ -9,10 +10,11 @@ const AuthFormBlock = styled.form`
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  width: fit-content;
-  padding-top: 5rem;
+  width: 300px;
+  padding-top: 12rem;
 `;
 const StyledInput = styled.input`
+  width: 100%;
   padding: 0.5rem;
   border: 0;
   border-radius: 0.3rem;
@@ -30,12 +32,29 @@ const LogInButton = styled(Button)`
   color: #fff;
   width: 100%;
 `;
+const ErrorBanner = styled.div`
+  height: 1rem;
+  color: ${OpenColor.red[7]};
+`;
 
 const AuthForm = () => {
+  const { username, password, error, onChange, onSubmit } = useAuthForm();
   return (
-    <AuthFormBlock>
-      <StyledInput placeholder="username" />
-      <StyledInput type="password" placeholder="password" />
+    <AuthFormBlock onSubmit={onSubmit}>
+      <StyledInput
+        placeholder="username"
+        name="username"
+        value={username}
+        onChange={onChange}
+      />
+      <StyledInput
+        type="password"
+        placeholder="password"
+        name="password"
+        value={password}
+        onChange={onChange}
+      />
+      <ErrorBanner>{error}</ErrorBanner>
       <LogInButton type="submit">로그인</LogInButton>
     </AuthFormBlock>
   );
