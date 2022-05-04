@@ -4,12 +4,13 @@ import ui from "./ui";
 import form from "./form";
 import auth from "./auth";
 import user from "./user";
+import write from "./write";
 
 export const reducer = (state, action) => {
   if (action.type === HYDRATE) {
     return { ...state, ...action.payload };
   }
-  return combineReducers({ ui, form, auth, user })(state, action);
+  return combineReducers({ ui, form, auth, user, write })(state, action);
 };
 
 const makeStore = () =>

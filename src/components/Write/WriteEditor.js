@@ -1,9 +1,15 @@
 import React, { useCallback, useRef } from "react";
 import styled from "styled-components";
-import { Editor } from "@toast-ui/react-editor";
-import "@toast-ui/editor/dist/toastui-editor.css";
 import { Button } from "components/Shared";
 import OpenColor from "open-color";
+import dynamic from "next/dynamic";
+const Editor = dynamic(() => import("./ToastEditor"), {
+  ssr: false,
+  loading: () => <p>...</p>,
+});
+import "@toast-ui/editor/dist/toastui-editor.css";
+import Category from "./Category";
+import useWrite from "hooks/useWrite";
 
 const EditorBlock = styled.div`
   display: flex;
@@ -33,26 +39,45 @@ const CancelButton = styled(Button)`
   color: #fff;
 `;
 
+const EditorWithForwarededRef = React.forwardRef((props, ref) => (
+  <Editor {...props} forwardedRef={ref} />
+));
+
 const WriteEditor = () => {
   const editorRef = useRef(null);
+  const {
+    title,
+    content,
+    category,
+    handleTitle,
+    handleContent,
+    handleCategory,
+    onSubmit,
+  } = useWrite();
 
-  const onSubmit = useCallback(() => {
+  const onChangeEditor = useCallback(() => {
     const content = editorRef.current.getInstance().getMarkdown();
-    console.log(content);
+    handleContent({ content });
   });
 
   return (
     <EditorBlock>
-      <TitleInput placeholder="제목을 입력하세요" />
-      <Editor
-        initialValue=" "
+      <TitleInput
+        placeholder="제목을 입력하세요"
+        value={title}
+        onChange={handleTitle}
+      />
+      <EditorWithForwarededRef
+        initialValue={content}
         previewStyle="vertical"
         height="70vh"
         initialEditType="markdown"
         useCommandShortcut={true}
+        onChange={onChangeEditor}
         ref={editorRef}
       />
       <ButtonBlock>
+        <Category category={category} handleCategory={handleCategory} />
         <CancelButton>취소</CancelButton>
         <SaveButton onClick={onSubmit}>저장</SaveButton>
       </ButtonBlock>

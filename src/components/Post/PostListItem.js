@@ -17,10 +17,6 @@ const PostListItemBlock = styled.div`
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   }
 
-  ${media.tablet} {
-    width: calc(100% / 2 - 2%);
-  }
-
   ${media.desktop} {
     width: 20rem;
     height: 20rem;
@@ -48,10 +44,10 @@ const Date = styled.div`
   color: ${OpenColor.gray[5]};
 `;
 
-const PostListItem = () => {
+const PostListItem = ({ image, title, date, content }) => {
   return (
     <PostListItemBlock>
-      <ImageBlock>
+      {/* <ImageBlock>
         <Image
           src="/cube.jpeg"
           width={16}
@@ -59,12 +55,12 @@ const PostListItem = () => {
           layout="responsive"
           objectFit="cover"
         />
-      </ImageBlock>
+      </ImageBlock> */}
       <TextBlock>
-        <Tags />
-        <Title>제목</Title>
-        <Body>내용</Body>
-        <Date>Date</Date>
+        {/* <Tags /> */}
+        <Title>{title}</Title>
+        <Body>{content}</Body>
+        <Date>{date}</Date>
       </TextBlock>
     </PostListItemBlock>
   );
