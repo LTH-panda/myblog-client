@@ -1,13 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { HYDRATE } from "next-redux-wrapper";
 
 const initialState = {
   sidebar: false,
   searchbar: false,
-  authForm: {
-    username: "",
-    password: "",
-  },
+  editmode: false,
 };
 
 const uiSlice = createSlice({
@@ -20,11 +16,12 @@ const uiSlice = createSlice({
     toggleSearchbar: (state) => {
       state.searchbar = !state.searchbar;
     },
-    changeForm: (state, action) => {
-      state.authForm;
+    toggleEditmode: (state) => {
+      state.editmode = !state.editmode;
     },
   },
 });
 
-export const { toggleSidebar, toggleSearchbar } = uiSlice.actions;
+export const { toggleSidebar, toggleSearchbar, toggleEditmode } =
+  uiSlice.actions;
 export default uiSlice.reducer;

@@ -1,3 +1,10 @@
+import MainTemplate from "components/Admin/MainTemplate";
+import { Template } from "components/Shared";
+
 export default function AdminMainPage() {
-  return <h1>AdminMainPage</h1>;
+  return (
+    <Template>
+      <MainTemplate />
+    </Template>
+  );
 }

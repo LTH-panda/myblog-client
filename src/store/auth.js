@@ -14,6 +14,18 @@ export const fetchLogin = createAsyncThunk(
   }
 );
 
+export const fetchLogout = createAsyncThunk(
+  "auth/fetchLogout",
+  async (_, { rejectWithValue }) => {
+    try {
+      await AuthApi.logout();
+    } catch (e) {
+      if (!e.response) throw e;
+      return rejectWithValue.apply(e.response.data);
+    }
+  }
+);
+
 const initialState = {
   auth: null,
   error: null,
@@ -22,6 +34,12 @@ const initialState = {
 const authSlice = createSlice({
   name: "auth",
   initialState,
+  reducers: {
+    initAuth: (state) => {
+      state.auth = null;
+      state.error = null;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchLogin.fulfilled, (state, action) => {
       state.auth = action.payload;
@@ -34,4 +52,5 @@ const authSlice = createSlice({
   },
 });
 
+export const { initAuth } = authSlice.actions;
 export default authSlice.reducer;

@@ -8,6 +8,11 @@ const initialState = {
   search: {
     search: "",
   },
+  career: {
+    title: "",
+    desc: "",
+    during: "",
+  },
 };
 
 const formSlice = createSlice({

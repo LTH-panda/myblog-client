@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { getUserStorage } from "store/user";
+import { fetchCheck, setTempUser } from "store/user";
 
 export default function useUser() {
   const dispatch = useDispatch();
@@ -9,6 +9,7 @@ export default function useUser() {
     const data = localStorage.getItem("user");
     const user = JSON.parse(data);
     if (!user) return;
-    dispatch(getUserStorage({ user }));
+    dispatch(setTempUser({ user }));
+    dispatch(fetchCheck());
   }, [dispatch]);
 }
