@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React from "react";
 import styled from "styled-components";
 import media from "styles/styles-utils";
@@ -9,6 +10,7 @@ const PostListBlock = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   gap: 1rem;
+  width: 100%;
 `;
 
 const StyledAnchor = styled.a`
@@ -26,13 +28,16 @@ const StyledAnchor = styled.a`
 `;
 
 const PostList = ({ posts }) => {
+  const router = useRouter();
+  const path = router.pathname;
+  console.log(path);
   return (
     <>
       <PostListBlock>
         {posts &&
           posts.map((post) => (
             <Link
-              href={{ pathname: "tech/[id]", query: { id: post._id } }}
+              href={{ pathname: `${path}/[id]`, query: { id: post._id } }}
               key={post._id}
             >
               <StyledAnchor>

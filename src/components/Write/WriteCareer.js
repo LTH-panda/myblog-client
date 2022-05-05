@@ -4,6 +4,8 @@ import OpenColor from "open-color";
 import React from "react";
 import styled from "styled-components";
 import useCareer from "hooks/useCareer";
+import { useSelector } from "react-redux";
+import { useRouter } from "next/router";
 
 const WriteCareerBlock = styled.div``;
 
@@ -21,9 +23,28 @@ const WriteButton = styled(Button)`
   background: ${OpenColor.indigo[5]};
   color: #fff;
 `;
+const UpdateButton = styled(Button)`
+  width: 100%;
+  background: ${OpenColor.green[5]};
+  color: #fff;
+`;
+const RemoveButton = styled(Button)`
+  width: 100%;
+  background: ${OpenColor.red[5]};
+  color: #fff;
+`;
 
 const WriteCareer = () => {
-  const { title, desc, during, onChange, onSubmit } = useCareer();
+  const {
+    title,
+    desc,
+    during,
+    id,
+    onChange,
+    onSubmit,
+    handleRemove,
+    handleUpdate,
+  } = useCareer();
 
   return (
     <WriteCareerBlock>
@@ -46,7 +67,16 @@ const WriteCareer = () => {
           name="during"
           onChange={onChange}
         />
-        <WriteButton type="submit">생성</WriteButton>
+        {id ? (
+          <UpdateButton type="button" onClick={handleUpdate}>
+            수정
+          </UpdateButton>
+        ) : (
+          <WriteButton type="submit">생성</WriteButton>
+        )}
+        <RemoveButton type="button" onClick={handleRemove}>
+          삭제
+        </RemoveButton>
       </StyledForm>
     </WriteCareerBlock>
   );

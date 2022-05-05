@@ -1,4 +1,13 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import * as CareerApi from "lib/api/career.api";
+
+export const fetchCareer = createAsyncThunk(
+  "form/fetchCareer",
+  async ({ id }) => {
+    const res = await CareerApi.getCareer({ id });
+    return res.data;
+  }
+);
 
 const initialState = {
   auth: {
@@ -25,6 +34,13 @@ const formSlice = createSlice({
     resetForm: (state, action) => {
       state[action.payload.form] = initialState[action.payload.form];
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(fetchCareer.fulfilled, (state, action) => {
+      state.career.title = action.payload.title;
+      state.career.desc = action.payload.desc;
+      state.career.during = action.payload.during;
+    });
   },
 });
 

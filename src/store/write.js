@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import * as WriteApi from "lib/api/write.api";
+import * as CareerApi from "lib/api/career.api";
 
 const initialState = {
   title: "",

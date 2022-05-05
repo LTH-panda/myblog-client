@@ -24,11 +24,11 @@ const Title = styled.div`
 const Desc = styled.div``;
 const During = styled.div``;
 const RemoveButton = styled(Button)`
-  background: ${OpenColor.red[5]};
+  background: ${OpenColor.indigo[5]};
   color: #fff;
 `;
 
-const CareerItem = ({ title, desc, during }) => {
+const CareerItem = ({ title, desc, during, id }) => {
   const { editmode } = useSelector((state) => state.ui);
   return (
     <CareerItemBlock>
@@ -36,8 +36,10 @@ const CareerItem = ({ title, desc, during }) => {
       <Desc>{desc}</Desc>
       <During>{during}</During>
       {editmode && (
-        <Link href="/write/career">
-          <RemoveButton>삭제</RemoveButton>
+        <Link href={{ pathname: "/write/career", query: { id } }}>
+          <a>
+            <RemoveButton>수정</RemoveButton>
+          </a>
         </Link>
       )}
     </CareerItemBlock>
