@@ -2,51 +2,36 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 import styled from "styled-components";
+import css from "styled-jsx/css";
 import media from "styles/styles-utils";
 import PostListItem from "./PostListItem";
-
-const PostListBlock = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-  width: 100%;
-`;
-
-const StyledAnchor = styled.a`
-  cursor: pointer;
-  width: 100%;
-  ${media.tablet} {
-    width: calc(100% / 2 - 2%);
-  }
-
-  ${media.desktop} {
-    width: 20rem;
-    height: 20rem;
-    padding-top: 0;
-  }
-`;
 
 const PostList = ({ posts }) => {
   const router = useRouter();
   const path = router.pathname;
-  console.log(path);
+
   return (
     <>
+      <style jsx>{style}</style>
       <PostListBlock>
         {posts &&
           posts.map((post) => (
             <Link
               href={{ pathname: `${path}/[id]`, query: { id: post._id } }}
               key={post._id}
+              passHref
             >
-              <StyledAnchor>
+              <a className="flex-link">
                 <PostListItem
                   title={post.title}
-                  content={post.content}
+                  content={
+                    post.content.length > 50
+                      ? post.content.slice(0, 50) + "..."
+                      : post.content
+                  }
                   date={post.date}
                 />
-              </StyledAnchor>
+              </a>
             </Link>
           ))}
       </PostListBlock>
@@ -55,3 +40,25 @@ const PostList = ({ posts }) => {
 };
 
 export default PostList;
+
+const PostListBlock = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 100%;
+`;
+const style = css`
+  .flex-link {
+    flex: 0 0 100%;
+  }
+  @media (min-width: 764px) {
+    .flex-link {
+      flex-basis: 48%;
+    }
+  }
+  @media (min-width: 1024px) {
+    .flex-link {
+      flex-basis: 31%;
+    }
+  }
+`;
