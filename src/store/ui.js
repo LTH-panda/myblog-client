@@ -4,6 +4,7 @@ const initialState = {
   sidebar: false,
   searchbar: false,
   editmode: false,
+  navActive: 0,
 };
 
 const uiSlice = createSlice({
@@ -19,9 +20,12 @@ const uiSlice = createSlice({
     toggleEditmode: (state) => {
       state.editmode = !state.editmode;
     },
+    setNavActive: (state, { payload }) => {
+      state.navActive = payload.id;
+    },
   },
 });
 
-export const { toggleSidebar, toggleSearchbar, toggleEditmode } =
+export const { toggleSidebar, toggleSearchbar, toggleEditmode, setNavActive } =
   uiSlice.actions;
 export default uiSlice.reducer;

@@ -14,17 +14,6 @@ export const fetchLogin = createAsyncThunk(
   }
 );
 
-export const fetchLogout = createAsyncThunk(
-  "auth/fetchLogout",
-  async (_, { rejectWithValue }) => {
-    try {
-      await AuthApi.logout();
-    } catch (e) {
-      if (!e.response) throw e;
-      return rejectWithValue.apply(e.response.data);
-    }
-  }
-);
 
 const initialState = {
   auth: null,

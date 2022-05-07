@@ -1,12 +1,10 @@
 import axios from "axios";
-import { AboutTemplate } from "components/Banner";
 import { PostList } from "components/Post";
 import { Template } from "components/Shared";
 
 export default function TechPage({ posts }) {
   return (
     <>
-      <AboutTemplate>Tech</AboutTemplate>
       <Template>
         <PostList posts={posts} />
       </Template>

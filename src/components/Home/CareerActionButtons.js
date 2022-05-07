@@ -6,20 +6,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleEditmode } from "store/ui";
 import styled from "styled-components";
 
-const ButtonsBlock = styled.div`
-  display: flex;
-  gap: 1rem;
-`;
-
-const EditButton = styled(Button)`
-  background: ${OpenColor.red[5]};
-  color: #fff;
-`;
-const WriteButton = styled(Button)`
-  background: ${OpenColor.green[5]};
-  color: #fff;
-`;
-
 const CareerActionButtons = () => {
   const { editmode } = useSelector((state) => state.ui);
   const dispatch = useDispatch();
@@ -45,3 +31,17 @@ const CareerActionButtons = () => {
 };
 
 export default CareerActionButtons;
+
+const ButtonsBlock = styled.div`
+  display: flex;
+  gap: 1rem;
+`;
+
+const EditButton = styled(Button)`
+  background: ${OpenColor.red[5]};
+  color: #fff;
+`;
+const WriteButton = styled(Button)`
+  background: ${OpenColor.green[5]};
+  color: #fff;
+`;

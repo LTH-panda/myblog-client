@@ -1,16 +1,18 @@
 import React from "react";
 import styled from "styled-components";
-
-const TemplateBlock = styled.main`
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
+import Nav from "./Nav";
 
 const Template = ({ children }) => {
-  return <TemplateBlock>{children}</TemplateBlock>;
+  return (
+    <TemplateBlock>
+      <Nav />
+      {children}
+    </TemplateBlock>
+  );
 };
 
 export default Template;
+
+const TemplateBlock = styled.main`
+  padding: 1rem;
+`;
