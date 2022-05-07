@@ -1,6 +1,6 @@
-import axios from "axios";
 import { PostDetail } from "components/Post";
 import { Template } from "components/Shared";
+import server from "lib/api/server";
 
 export default function StartUpDetailPage({ post }) {
   return (
@@ -11,7 +11,7 @@ export default function StartUpDetailPage({ post }) {
 }
 
 export async function getStaticPaths() {
-  const res = await axios.get("http://localhost:4000/api/start-up");
+  const res = await server.get("/start-up");
   const posts = res.data;
   const paths = posts.map((post) => ({
     params: { id: post._id },
@@ -22,9 +22,7 @@ export async function getStaticPaths() {
   };
 }
 export async function getStaticProps({ params }) {
-  const res = await axios.get(
-    `http://localhost:4000/api/start-up/${params.id}`
-  );
+  const res = await server.get(`start-up/${params.id}`);
   const post = res.data;
 
   return {

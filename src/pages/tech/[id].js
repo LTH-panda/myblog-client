@@ -1,6 +1,6 @@
-import axios from "axios";
 import { PostDetail } from "components/Post";
 import { Template } from "components/Shared";
+import server from "lib/api/server";
 
 export default function TechDetailPage({ post }) {
   return (
@@ -11,7 +11,7 @@ export default function TechDetailPage({ post }) {
 }
 
 export async function getStaticPaths() {
-  const res = await axios.get("http://localhost:4000/api/tech");
+  const res = await server.get("/tech");
   const posts = res.data;
 
   const paths = posts.map((post) => ({
@@ -24,7 +24,7 @@ export async function getStaticPaths() {
   };
 }
 export async function getStaticProps({ params }) {
-  const res = await axios.get(`http://localhost:4000/api/tech/${params.id}`);
+  const res = await server.get(`/tech/${params.id}`);
   const post = res.data;
 
   return {

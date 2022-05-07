@@ -1,6 +1,6 @@
-import axios from "axios";
 import { PostEmpty, PostList } from "components/Post";
 import { Template } from "components/Shared";
+import server from "lib/api/server";
 
 export default function StartUpPage({ posts }) {
   return (
@@ -13,7 +13,7 @@ export default function StartUpPage({ posts }) {
 }
 
 export async function getStaticProps() {
-  const res = await axios.get("http://localhost:4000/api/start-up");
+  const res = await server.get("/start-up");
   const posts = res.data;
 
   return {

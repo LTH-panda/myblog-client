@@ -1,6 +1,6 @@
-import axios from "axios";
-import { AboutMeTemplate, HomeTemplate } from "components/Home";
+import { AboutMeTemplate } from "components/Home";
 import { Template } from "components/Shared";
+import server from "lib/api/server";
 
 export default function Home({ careers }) {
   return (
@@ -13,7 +13,7 @@ export default function Home({ careers }) {
 }
 
 export async function getStaticProps() {
-  const res = await axios.get("http://localhost:4000/api/career");
+  const res = await server.get("/career");
   const careers = res.data;
 
   return {
