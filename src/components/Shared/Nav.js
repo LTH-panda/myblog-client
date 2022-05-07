@@ -1,56 +1,48 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import OpenColor from "open-color";
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setNavActive } from "store/ui";
 import styled from "styled-components";
 
 const Nav = () => {
+  const router = useRouter();
+  const path = router.pathname.split("/")[1];
   const { navActive } = useSelector((state) => state.ui);
   const dispatch = useDispatch();
-  const setActive = useCallback((id) => {
-    dispatch(setNavActive({ id }));
-  }, []);
+
+  useEffect(() => {
+    dispatch(setNavActive({ path }));
+  });
 
   return (
     <NavBlock>
       <StyledList>
         <Link href="/" passHref>
           <a>
-            <StyledLink
-              onClick={() => setActive(0)}
-              className={navActive === 0 && "active"}
-            >
+            <StyledLink className={navActive === "" && "active"}>
               About
             </StyledLink>
           </a>
         </Link>
         <Link href="/tech" passHref>
           <a>
-            <StyledLink
-              onClick={() => setActive(1)}
-              className={navActive === 1 && "active"}
-            >
+            <StyledLink className={navActive === "tech" && "active"}>
               Tech
             </StyledLink>
           </a>
         </Link>{" "}
         <Link href="/start-up" passHref>
           <a>
-            <StyledLink
-              onClick={() => setActive(2)}
-              className={navActive === 2 && "active"}
-            >
+            <StyledLink className={navActive === "start-up" && "active"}>
               Start-Up
             </StyledLink>
           </a>
         </Link>{" "}
         <Link href="/log" passHref>
           <a>
-            <StyledLink
-              onClick={() => setActive(3)}
-              className={navActive === 3 && "active"}
-            >
+            <StyledLink className={navActive === "log" && "active"}>
               {" "}
               Log
             </StyledLink>
