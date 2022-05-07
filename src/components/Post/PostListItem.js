@@ -3,8 +3,6 @@ import Image from "next/image";
 import OpenColor from "open-color";
 import React from "react";
 import styled from "styled-components";
-import media from "styles/styles-utils";
-import Tags from "./Tags";
 
 const PostListItem = ({ image, title, date, content }) => {
   return (
@@ -19,7 +17,6 @@ const PostListItem = ({ image, title, date, content }) => {
         />
       </ImageBlock>
       <TextBlock>
-        {/* <Tags /> */}
         <Title>{title}</Title>
         <Body>{content}</Body>
         <Date>{date}</Date>

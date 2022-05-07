@@ -1,12 +1,12 @@
 import axios from "axios";
-import { PostList } from "components/Post";
+import { PostEmpty, PostList } from "components/Post";
 import { Template } from "components/Shared";
 
 export default function StartUpPage({ posts }) {
   return (
     <>
       <Template>
-        <PostList posts={posts} />
+        {posts.length !== 0 ? <PostList posts={posts} /> : <PostEmpty />}
       </Template>
     </>
   );

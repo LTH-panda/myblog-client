@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import React from "react";
 import styled from "styled-components";
 import css from "styled-jsx/css";
-import media from "styles/styles-utils";
 import PostListItem from "./PostListItem";
 
 const PostList = ({ posts }) => {
@@ -14,26 +13,25 @@ const PostList = ({ posts }) => {
     <>
       <style jsx>{style}</style>
       <PostListBlock>
-        {posts &&
-          posts.map((post) => (
-            <Link
-              href={{ pathname: `${path}/[id]`, query: { id: post._id } }}
-              key={post._id}
-              passHref
-            >
-              <a className="flex-link">
-                <PostListItem
-                  title={post.title}
-                  content={
-                    post.content.length > 50
-                      ? post.content.slice(0, 50) + "..."
-                      : post.content
-                  }
-                  date={post.date}
-                />
-              </a>
-            </Link>
-          ))}
+        {posts.map((post) => (
+          <Link
+            href={{ pathname: `${path}/[id]`, query: { id: post._id } }}
+            key={post._id}
+            passHref
+          >
+            <a className="flex-link">
+              <PostListItem
+                title={post.title}
+                content={
+                  post.content.length > 50
+                    ? post.content.slice(0, 50) + "..."
+                    : post.content
+                }
+                date={post.date}
+              />
+            </a>
+          </Link>
+        ))}
       </PostListBlock>
     </>
   );
