@@ -7,15 +7,15 @@ import styled from "styled-components";
 const PostListItem = ({ image, title, date, content }) => {
   return (
     <PostListItemBlock hover>
-      <ImageBlock>
+      {/* <ImageBlock>
         <Image
-          src="/cube.jpeg"
+          src={image}
           width={21}
           height={9}
           layout="responsive"
           objectFit="cover"
         />
-      </ImageBlock>
+      </ImageBlock> */}
       <TextBlock>
         <Title>{title}</Title>
         <Body>{content}</Body>
@@ -42,6 +42,7 @@ const TextBlock = styled.div`
   flex-direction: column;
   gap: 0.5rem;
   word-break: break-all;
+  min-height: 130px;
 `;
 const Title = styled.h3`
   font-size: 1.3rem;

@@ -1,4 +1,4 @@
-import { ShadowContainer } from "components/Shared";
+import ShadowContainer from "components/Shared/ShadowContainer";
 import useOnlineAdmin from "hooks/useOnlineAdmin";
 import OpenColor from "open-color";
 import React from "react";

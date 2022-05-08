@@ -1,4 +1,4 @@
-import { Button } from "components/Shared";
+import Button from "components/Shared/Button";
 import { useRouter } from "next/router";
 import OpenColor from "open-color";
 import React, { useCallback } from "react";

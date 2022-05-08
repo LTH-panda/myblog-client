@@ -1,4 +1,4 @@
-import { Button } from "components/Shared";
+import Button from "components/Shared/Button";
 import Link from "next/link";
 import OpenColor from "open-color";
 import React from "react";

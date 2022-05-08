@@ -1,6 +1,7 @@
+import React from "react";
 import styled from "styled-components";
 
-const Button = styled.button`
+const StyledButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,5 +13,9 @@ const Button = styled.button`
   font-size: 1rem;
   cursor: pointer;
 `;
+
+const Button = ({ children, ...props }) => {
+  return <StyledButton {...props}>{children}</StyledButton>;
+};
 
 export default Button;

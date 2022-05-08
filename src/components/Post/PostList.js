@@ -27,7 +27,7 @@ const PostList = ({ posts }) => {
                     ? post.content.slice(0, 50) + "..."
                     : post.content
                 }
-                date={post.date}
+                date={post.date.slice(0, 10)}
               />
             </a>
           </Link>

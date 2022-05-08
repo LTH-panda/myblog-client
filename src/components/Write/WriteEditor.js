@@ -1,6 +1,6 @@
 import React, { useCallback, useRef } from "react";
 import styled from "styled-components";
-import { Button } from "components/Shared";
+import Button from "components/Shared/Button";
 import OpenColor from "open-color";
 import dynamic from "next/dynamic";
 const Editor = dynamic(() => import("./ToastEditor"), {

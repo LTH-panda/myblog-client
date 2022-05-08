@@ -1,5 +1,5 @@
 import { CareerList } from "components/Home";
-import { Button } from "components/Shared";
+import Button from "components/Shared/Button";
 import OpenColor from "open-color";
 import React from "react";
 import styled from "styled-components";
