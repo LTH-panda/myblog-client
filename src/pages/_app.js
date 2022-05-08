@@ -1,14 +1,20 @@
 import { Layout } from "components/Shared";
 import useUser from "hooks/useUser";
+import Head from "next/head";
 import { wrapper } from "store";
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
   useUser();
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <>
+      <Head>
+        <title>Whale-Log</title>
+      </Head>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </>
   );
 }
 
