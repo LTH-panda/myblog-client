@@ -5,7 +5,7 @@ const nextConfig = {
     return [
       {
         source: "/api/:path*",
-        destination: "https://git.heroku.com/whale-log.git/api/:path*",
+        destination: "https://whale-log.herokuapp.com/api/:path*",
       },
     ];
   },

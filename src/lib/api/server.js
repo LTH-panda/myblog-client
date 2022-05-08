@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const server = axios.create({
-  baseURL: "https://git.heroku.com/whale-log.git/api",
+  baseURL: "https://whale-log.herokuapp.com/api",
 });
 
 export default server;
